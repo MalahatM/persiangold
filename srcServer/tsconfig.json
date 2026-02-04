@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "module": "nodenext",
+    "target": "ESNext",
+
+    "rootDir": "./",
+    "outDir": "../distServer/",
+
+    "types": ["node"],
+    "lib": ["ESNext"],
+
+    "esModuleInterop": true,
+    "moduleResolution": "nodenext",
+
+    "strict": true,
+    "skipLibCheck": true,
+    "sourceMap": true
+  },
+  "include": ["./**/*.ts"],
+  "exclude": ["node_modules"]
+}
