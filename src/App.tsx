@@ -1,35 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+
+
+import "./App.css";
+
+import HamburgerButton from "./components/layout/HamburgerButton";
+import SideMenu from "./components/layout/SideMenu";
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  
+
+  const links = [
+    { label: "Home", href: "/" },
+    { label: "Gallery", href: "/gallery" },
+    { label: "About us", href: "/about us" },
+	 { label: "Bookning", href: "/bookning" },
+	 { label: "Contact us", href: "/contact us" },
+  ];
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+  <header
+  style={{
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: "12px 16px",
+    borderBottom: "1px solid #e5e5e5",
+  }}
+>
+  <strong>PersianGold</strong>
+  <HamburgerButton />
+</header>
+
+
+      <SideMenu links={links} />
+
+      <main style={{ padding: 16 }}>
+       
+      
+      </main>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
