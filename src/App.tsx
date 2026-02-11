@@ -1,29 +1,49 @@
 import "./App.css";
+import { Routes, Route } from "react-router-dom";
 
-import Home from "./pages/Home";
-import Header from "./components/layout/Header";
+import HamburgerButton from "./components/layout/HamburgerButton";
 import SideMenu from "./components/layout/SideMenu";
-import Footer from "./components/layout/Footer";
 
-export default function App() {
+import CartButton from "./components/cart/CartButton";
+import CartDrawer from "./components/cart/CartDrawer";
+
+import GalleryPage from "./pages/Gallery/GalleryPage";
+
+function App() {
   const links = [
-    { label: "Home", href: "/" },
     { label: "Gallery", href: "/gallery" },
-    { label: "About us", href: "/about-us" },
-    { label: "Booking", href: "/booking" },
-    { label: "Contact us", href: "/contact-us" },
   ];
 
   return (
-    <div className="appShell">
-      <Header brand="Persian Gold" />
+    <>
+      <header
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "12px 16px",
+          borderBottom: "1px solid #e5e5e5",
+        }}
+      >
+        <strong>PersianGold</strong>
+        <div style={{ display: "flex", gap: 10 }}>
+          <CartButton />
+          <HamburgerButton />
+        </div>
+      </header>
+
       <SideMenu links={links} />
 
-      <main className="appMain">
-        <Home />
+      <main style={{ padding: 16 }}>
+        <Routes>
+          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="*" element={<div>Loading...</div>} />
+        </Routes>
       </main>
 
-      <Footer />
-    </div>
+      <CartDrawer />
+    </>
   );
 }
+
+export default App;
