@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import CartButton from "./components/cart/CartButton";
+import CartDrawer from "./components/cart/CartDrawer";
+import { useCartStore } from "./store/cartStore";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const addItem = useCartStore((s) => s.addItem);
+  const clear = useCartStore((s) => s.clear);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div style={{ padding: 24 }}>
+      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <CartButton />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
 
-export default App
+      <CartDrawer />
+
+      <h1>Test Cart</h1>
+
+      <div style={{ display: "flex", gap: 12, marginTop: 16 }}>
+        <button
+          onClick={() =>
+            addItem({
+              id: "p1",
+              name: "Test Product",
+              price: 99,
+              imageUrl: "",
+            })
+          }
+        >
+          Add Test Product
+        </button>
+
+        <button onClick={clear}>Clear Cart</button>
+      </div>
+    </div>
+  );
+}
