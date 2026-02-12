@@ -1,4 +1,5 @@
 import { useUiStore } from "../../store/uiStore";
+import "./SideMenu.css";
 
 type Props = {
   links?: { label: string; href: string }[];
@@ -8,32 +9,24 @@ export default function SideMenu({ links = [] }: Props) {
   const isOpen = useUiStore((s) => s.isSideMenuOpen);
   const closeMenu = useUiStore((s) => s.closeSideMenu);
 
-  if (!isOpen) return null;
-
   return (
     <div
       role="dialog"
       aria-modal="true"
-      style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.4)" }}
+      className={`sideMenuOverlay ${isOpen ? "is-open" : ""}`}
       onClick={closeMenu}
     >
       <div
-        style={{
-          width: 280,
-          height: "100%",
-          background: "#111",
-          color: "#fff",
-          padding: 16,
-        }}
+        className={`sideMenuPanel ${isOpen ? "is-open" : ""}`}
         onClick={(e) => e.stopPropagation()}
       >
-        <button type="button" onClick={closeMenu} aria-label="Close menu">
+        <button type="button" onClick={closeMenu} aria-label="Close menu" className="sideMenuClose">
           ×
         </button>
 
-        <nav style={{ marginTop: 16, display: "grid", gap: 12 }}>
+        <nav className="sideMenuNav">
           {links.map((l) => (
-            <a key={l.href} href={l.href} style={{ color: "#fff" }}>
+            <a key={l.href} href={l.href} className="sideMenuLink" onClick={closeMenu}>
               {l.label}
             </a>
           ))}

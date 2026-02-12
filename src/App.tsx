@@ -1,46 +1,27 @@
-
-
 import "./App.css";
 
-import HamburgerButton from "./components/layout/HamburgerButton";
+import Header from "./components/layout/Header";
 import SideMenu from "./components/layout/SideMenu";
 
 
-
 function App() {
-  
-
   const links = [
     { label: "Home", href: "/" },
     { label: "Gallery", href: "/gallery" },
-    { label: "About us", href: "/about us" },
-	 { label: "Bookning", href: "/bookning" },
-	 { label: "Contact us", href: "/contact us" },
+    { label: "About us", href: "/about-us" },
+    { label: "Booking", href: "/booking" },
+    { label: "Contact us", href: "/contact-us" },
   ];
 
   return (
-    <>
-  <header
-  style={{
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: "12px 16px",
-    borderBottom: "1px solid #e5e5e5",
-  }}
->
-  <strong>PersianGold</strong>
-  <HamburgerButton />
-</header>
-
-
+    <div className="appShell">
+      <Header brand="Persian Gold" cartText="0 $" />
       <SideMenu links={links} />
 
-      <main style={{ padding: 16 }}>
-       
-      
+      <main className="appMain">
+        
       </main>
-    </>
+    </div>
   );
 }
 
