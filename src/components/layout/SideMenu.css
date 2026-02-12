@@ -25,13 +25,13 @@
   padding: 16px;
   box-shadow: -12px 0 30px rgba(0,0,0,0.45);
 
-  transform: translateX(110%); 
+  transform: translateX(110%); /* بیرون صفحه */
   transition: transform 260ms ease;
   will-change: transform;
 }
 
 .sideMenuPanel.is-open{
-  transform: translateX(0);
+  transform: translateX(0); /* میاد روی صفحه */
 }
 
 .sideMenuClose{

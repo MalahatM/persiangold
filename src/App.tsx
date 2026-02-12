@@ -27,7 +27,9 @@ function App() {
           alignItems: "center",
           justifyContent: "space-between",
           padding: "12px 16px",
-          borderBottom: "1px solid #e5e5e5",
+          borderBottom: "1px solid rgba(255,255,255,0.12)",
+          background: "#0b0b0b",
+          color: "#fff",
         }}
       >
         <strong>PersianGold</strong>
@@ -45,9 +47,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/gallery" element={<GalleryPage />} />
 
-          <Route path="/about-us" element={<div>ABOUT</div>} />
-          <Route path="/booking" element={<div>BOOKING</div>} />
-          <Route path="/contact-us" element={<div>CONTACT</div>} />
+          <Route path="/about-us" element={<div style={{ padding: 16 }}>ABOUT</div>} />
+          <Route path="/booking" element={<div style={{ padding: 16 }}>BOOKING</div>} />
+          <Route path="/contact-us" element={<div style={{ padding: 16 }}>CONTACT</div>} />
 
           <Route path="*" element={<div style={{ padding: 16 }}>Not found</div>} />
         </Routes>
