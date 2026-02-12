@@ -1,10 +1,11 @@
+
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
-import HamburgerButton from "./components/layout/HamburgerButton";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
 import SideMenu from "./components/layout/SideMenu";
 
-import CartButton from "./components/cart/CartButton";
 import CartDrawer from "./components/cart/CartDrawer";
 
 import Home from "./pages/Home";
@@ -21,24 +22,7 @@ function App() {
 
   return (
     <>
-      <header
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "12px 16px",
-          borderBottom: "1px solid rgba(255,255,255,0.12)",
-          background: "#0b0b0b",
-          color: "#fff",
-        }}
-      >
-        <strong>PersianGold</strong>
-
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <CartButton />
-          <HamburgerButton />
-        </div>
-      </header>
+      <Header />
 
       <SideMenu links={links} />
 
@@ -55,6 +39,7 @@ function App() {
         </Routes>
       </main>
 
+      <Footer />
       <CartDrawer />
     </>
   );

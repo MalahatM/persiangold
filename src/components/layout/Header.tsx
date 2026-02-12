@@ -4,7 +4,7 @@ import HamburgerButton from "./HamburgerButton";
 
 type Props = {
   brand?: string;
-  cartText?: string; // فعلاً ساده؛ بعداً میشه number/price
+  cartText?: string; 
 };
 
 export default function Header({ brand = "Persian Gold", cartText = "0 $" }: Props) {
