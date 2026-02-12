@@ -10,7 +10,7 @@
 .siteHeader__brand{
   font-size: 28px;
   letter-spacing: 0.6px;
-  font-style: italic; /* نزدیک به حس تصویرت */
+  font-style: italic; 
 }
 
 .siteHeader__actions{
@@ -35,11 +35,9 @@
   font-size: 22px;
 }
 
-.siteHeader__hamburger{
-  /* اگر HamburgerButton خودش background داره، اینجا می‌تونی override کنی */
-}
 
-/* Mobile (بعداً) */
+
+
 @media (max-width: 640px){
   .siteHeader{
     padding: 14px 16px;

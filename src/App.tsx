@@ -2,6 +2,8 @@ import "./App.css";
 
 import Header from "./components/layout/Header";
 import SideMenu from "./components/layout/SideMenu";
+import Footer from "./components/layout/Footer";
+
 
 
 function App() {
@@ -19,8 +21,10 @@ function App() {
       <SideMenu links={links} />
 
       <main className="appMain">
-        
+       
       </main>
+
+      <Footer />
     </div>
   );
 }
