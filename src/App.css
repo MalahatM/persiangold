@@ -1,1 +1,10 @@
-/* Global app-level styles (keep minimal) */
+.appHeaderWrap {
+  position: relative;
+}
+
+.appCartBtn {
+  position: absolute;
+  top: 12px;
+  right: 72px;
+  z-index: 1000;
+}

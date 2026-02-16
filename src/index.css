@@ -1,22 +1,7 @@
-/* ===== GLOBAL RESET & BASE ===== */
-
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: dark;
-  color: rgba(255, 255, 255, 0.87);
   background-color: #0b0b0b;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 body {
@@ -24,22 +9,5 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background: #0b0b0b;
-}
-
-/* Global typography */
-
-h1 {
-  margin: 0;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* Global button base style */
-
-button {
-  font-family: inherit;
-  cursor: pointer;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
