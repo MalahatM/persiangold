@@ -1,17 +1,19 @@
-import "./Header.css";
+// Header.tsx
+import CartButton from "../cart/CartButton";
 import HamburgerButton from "./HamburgerButton";
+import "./Header.css";
 
-type Props = {
-  brand?: string;
-};
-
-export default function Header({ brand = "Persian Gold" }: Props) {
+export default function Header() {
   return (
-    <header className="siteHeader">
-      <div className="siteHeader__brand">{brand}</div>
+    <header className="header">
+      <div className="headerInner">
+		
+        <div className="brand">Persian Gold</div>
 
-      <div className="siteHeader__actions">
-        <HamburgerButton className="siteHeader__hamburger" />
+        <div className="headerActions">
+          <CartButton />
+          <HamburgerButton />
+        </div>
       </div>
     </header>
   );

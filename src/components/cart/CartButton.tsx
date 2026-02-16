@@ -5,6 +5,7 @@ type Props = { className?: string };
 export default function CartButton({ className }: Props) {
   const toggleCart = useCartStore((s) => s.toggleCart);
   const totalCount = useCartStore((s) => s.totalCount());
+console.count("CartButton render");
 
   return (
     <button
