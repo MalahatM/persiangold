@@ -19,21 +19,9 @@
   gap: 16px;
 }
 
-.siteHeader__cart{
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 16px;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.35);
-  background: rgba(255,255,255,0.05);
-  color: #fff;
-  cursor: pointer;
-}
 
-.siteHeader__cartText{
-  font-size: 22px;
-}
+
+
 
 
 

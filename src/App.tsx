@@ -1,4 +1,3 @@
-
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
@@ -6,6 +5,7 @@ import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import SideMenu from "./components/layout/SideMenu";
 
+import CartButton from "./components/cart/CartButton";
 import CartDrawer from "./components/cart/CartDrawer";
 
 import Home from "./pages/Home";
@@ -22,7 +22,14 @@ function App() {
 
   return (
     <>
-      <Header />
+     
+      <div style={{ position: "relative" }}>
+        <Header />
+
+        <div style={{ position: "absolute", top: 12, right: 72, zIndex: 1000 }}>
+          <CartButton />
+        </div>
+      </div>
 
       <SideMenu links={links} />
 
