@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useUiStore } from "../../store/uiStore";
 import "./SideMenu.css";
 
@@ -9,29 +11,54 @@ export default function SideMenu({ links = [] }: Props) {
   const isOpen = useUiStore((s) => s.isSideMenuOpen);
   const closeMenu = useUiStore((s) => s.closeSideMenu);
 
+  // close on Escape
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeMenu();
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isOpen, closeMenu]);
+
   return (
     <div
       role="dialog"
       aria-modal="true"
-      className={`sideMenuOverlay ${isOpen ? "is-open" : ""}`}
+      className={`sideMenuOverlay ${isOpen ? "isOpen" : "isClosed"}`}
       onClick={closeMenu}
     >
-      <div
-        className={`sideMenuPanel ${isOpen ? "is-open" : ""}`}
+      <aside
+        className={`sideMenuPanel ${isOpen ? "isOpen" : "isClosed"}`}
         onClick={(e) => e.stopPropagation()}
       >
-        <button type="button" onClick={closeMenu} aria-label="Close menu" className="sideMenuClose">
-          ×
-        </button>
+        <div className="sideMenuTop">
+          <strong className="sideMenuTitle">Menu</strong>
+          <button
+            type="button"
+            onClick={closeMenu}
+            aria-label="Close menu"
+            className="sideMenuCloseBtn"
+          >
+            ×
+          </button>
+        </div>
 
         <nav className="sideMenuNav">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="sideMenuLink" onClick={closeMenu}>
+            <Link
+              key={l.href}
+              to={l.href}
+              onClick={closeMenu}
+              className="sideMenuLink"
+            >
               {l.label}
-            </a>
+            </Link>
           ))}
         </nav>
-      </div>
+      </aside>
     </div>
   );
 }

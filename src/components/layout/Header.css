@@ -19,15 +19,7 @@
   gap: 16px;
 }
 
-.siteHeader__cart {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  color: #fff;
-  border-radius: 14px;
-  padding: 8px 10px;
-  display: inline-flex;
-  align-items: center;
-}
+
 
 
 
