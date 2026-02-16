@@ -4,8 +4,6 @@ import Header from "./components/layout/Header";
 import SideMenu from "./components/layout/SideMenu";
 import Footer from "./components/layout/Footer";
 
-
-
 function App() {
   const links = [
     { label: "Home", href: "/" },
@@ -17,11 +15,10 @@ function App() {
 
   return (
     <div className="appShell">
-      <Header brand="Persian Gold" cartText="0 $" />
+      <Header brand="Persian Gold" />
       <SideMenu links={links} />
 
       <main className="appMain">
-       
       </main>
 
       <Footer />

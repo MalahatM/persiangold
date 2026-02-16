@@ -1,5 +1,5 @@
 import "./Footer.css";
-import { Facebook, Instagram, Lock } from "lucide-react";
+import { Facebook, Instagram } from "lucide-react";
 
 type Props = {
   ownerText?: string;
@@ -10,9 +10,6 @@ export default function Footer({
 }: Props) {
   return (
     <footer className="siteFooter">
-      <div className="siteFooter__topIcon">
-        <Lock size={26} strokeWidth={1.8} />
-      </div>
 
       <div className="siteFooter__content">
         <div className="siteFooter__col">
@@ -32,7 +29,7 @@ export default function Footer({
           <div className="siteFooter__contact">
             <div>📞 046782926</div>
             <div>✉ email@persiangold.com</div>
-            <div>📍Address:Iran mall 2e  floor nummer 396 </div>
+            <div>📍Address:Iran mall 2e floor nummer 396</div>
           </div>
         </div>
       </div>
