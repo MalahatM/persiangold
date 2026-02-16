@@ -7,11 +7,16 @@ import SideMenu from "./components/layout/SideMenu";
 import CartButton from "./components/cart/CartButton";
 import CartDrawer from "./components/cart/CartDrawer";
 
+import Home from "./pages/Home";
 import GalleryPage from "./pages/Gallery/GalleryPage";
 
 function App() {
   const links = [
+    { label: "Home", href: "/" },
     { label: "Gallery", href: "/gallery" },
+    { label: "About us", href: "/about-us" },
+    { label: "Booking", href: "/booking" },
+    { label: "Contact us", href: "/contact-us" },
   ];
 
   return (
@@ -26,7 +31,8 @@ function App() {
         }}
       >
         <strong>PersianGold</strong>
-        <div style={{ display: "flex", gap: 10 }}>
+
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <CartButton />
           <HamburgerButton />
         </div>
@@ -34,10 +40,16 @@ function App() {
 
       <SideMenu links={links} />
 
-      <main style={{ padding: 16 }}>
+      <main>
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/gallery" element={<GalleryPage />} />
-          <Route path="*" element={<div>Loading...</div>} />
+
+          <Route path="/about-us" element={<div>ABOUT</div>} />
+          <Route path="/booking" element={<div>BOOKING</div>} />
+          <Route path="/contact-us" element={<div>CONTACT</div>} />
+
+          <Route path="*" element={<div style={{ padding: 16 }}>Not found</div>} />
         </Routes>
       </main>
 
