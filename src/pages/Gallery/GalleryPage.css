@@ -1,0 +1,137 @@
+
+.galleryPage{
+  min-height: 100vh;
+  background: #0b0b0b;
+  color: #fff;
+  padding: 44px 56px 70px;
+}
+
+.galleryPage__title{
+  margin: 18px 0 30px;
+  font-size: 56px;         
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  line-height: 1;
+}
+
+
+.galleryGrid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 90px 140px;          
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+
+.galleryCard{
+  border: 0;
+  padding: 0;
+  background: transparent;
+  width: 100%;
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+
+
+  box-shadow: 0 18px 60px rgba(0,0,0,0.45);
+}
+
+.galleryCard__img{
+  width: 100%;
+  display: block;
+
+
+  aspect-ratio: 16 / 9;  
+  height: auto;
+
+  object-fit: cover;
+  object-position: center;
+
+  transform: scale(1.01);
+}
+
+.galleryCard__overlay{
+  position: absolute;
+  inset: 0;
+
+ 
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0.22) 55%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  pointer-events: none;
+}
+
+.galleryCard__label{
+  position: absolute;
+  right: 18px;
+  bottom: 16px;
+
+
+  max-width: calc(100% - 36px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  font-size: 28px;   
+  font-weight: 500;
+  color: rgba(255,255,255,0.92);
+  text-shadow: 0 6px 22px rgba(0,0,0,0.75);
+}
+
+
+@media (max-width: 700px){
+  .galleryCard__img{
+    aspect-ratio: 4 / 3;
+  }
+
+  .galleryCard__label{
+    font-size: 36px;
+    right: 16px;
+    bottom: 14px;
+  }
+}
+/* ===== Tablet ===== */
+@media (max-width: 900px) {
+  .galleryPage {
+    padding: 28px 22px 40px;
+  }
+
+  .galleryGrid {
+    gap: 26px;
+    max-width: 900px;
+  }
+}
+
+/* ===== Mobile==== */
+@media (max-width: 640px) {
+  .galleryPage {
+    padding: 18px 16px 28px;
+  }
+
+  .galleryPage__title {
+    font-size: 48px;
+    margin: 10px 0 18px;
+  }
+
+  .galleryGrid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    max-width: 520px;
+  }
+
+  .galleryCard__img {
+    aspect-ratio: 16 / 9;
+  }
+
+  .galleryCard__label {
+    font-size: 36px; 
+    right: 16px;
+    bottom: 14px;
+  }
+}
+
