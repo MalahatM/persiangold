@@ -51,7 +51,23 @@ export default function BraceletsPage() {
 
   const visibleProducts = useMemo(() => {
     if (!sort) return products;
-    return products; // اگر sort logic دارید مثل Rings اینجا کپی کن
+
+    const sorted = [...products];
+
+    switch (sort) {
+      case "title_asc":
+        sorted.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+
+      case "price_asc":
+        sorted.sort((a, b) => a.price - b.price);
+        break;
+
+      default:
+        break;
+    }
+
+    return sorted;
   }, [products, sort]);
 
   return (
@@ -60,19 +76,17 @@ export default function BraceletsPage() {
         <h1 className={styles.title}>Bracelets</h1>
 
         <div className={styles.sortWrap}>
-          <span>Sort by</span>
           <SortDropdown />
         </div>
       </div>
 
       {loading ? (
-        <p>Loading...</p>
+        <p className={styles.debug}>Loading...</p>
       ) : (
         <div className={styles.grid}>
           {visibleProducts.map((p) => (
             <div key={p.id} className={styles.card}>
               <img className={styles.image} src={p.imageUrl} alt={p.name} />
-
               <div className={styles.cardBody}>
                 <h3 className={styles.cardTitle}>{p.name}</h3>
                 <p className={styles.price}>{p.price} £</p>
