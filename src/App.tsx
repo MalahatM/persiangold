@@ -11,6 +11,8 @@ import CartDrawer from "./components/cart/CartDrawer";
 
 import Home from "./pages/Home";
 import GalleryPage from "./pages/Gallery/GalleryPage";
+import RingsPage from "./pages/Rings/RingsPage";
+
 
 export default function App() {
   const links = [
@@ -30,16 +32,19 @@ export default function App() {
 
       <SideMenu links={links} />
 
-      {/* ⬇️ مهم: main رو بردار */}
       <div className="appMain">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/gallery" element={<GalleryPage />} />
-          <Route path="/about-us" element={<div style={{ padding: 16 }}>ABOUT</div>} />
-          <Route path="/booking" element={<div style={{ padding: 16 }}>BOOKING</div>} />
-          <Route path="/contact-us" element={<div style={{ padding: 16 }}>CONTACT</div>} />
-          <Route path="*" element={<div style={{ padding: 16 }}>Not found</div>} />
-        </Routes>
+      <Routes>
+  <Route path="/" element={<Home />} />
+  <Route path="/gallery" element={<GalleryPage />} />
+
+  <Route path="/rings" element={<RingsPage />} />
+
+  <Route path="/about-us" element={<div style={{ padding: 16 }}>ABOUT</div>} />
+  <Route path="/booking" element={<div style={{ padding: 16 }}>BOOKING</div>} />
+  <Route path="/contact-us" element={<div style={{ padding: 16 }}>CONTACT</div>} />
+  <Route path="*" element={<div style={{ padding: 16 }}>Not found</div>} />
+</Routes>
+
       </div>
 
       <Footer />
