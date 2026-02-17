@@ -12,6 +12,9 @@ import RingsPage from "./pages/Rings/RingsPage";
 
 
 import NecklacePage from "./pages/Necklaces/NecklacesPage";
+import EarringsPage from "./pages/Earrings/EarringsPage";
+
+
 import BraceletsPage from "./pages/Bracelets/BraceletsPage";
 
 
@@ -42,6 +45,7 @@ export default function App() {
 
           {/* ✅ Necklace routes */}
           <Route path="/necklaces" element={<NecklacePage />} />
+		  <Route path="/earrings" element={<EarringsPage />} />
 		  {/* ✅ Bracelet routes */}
 		  <Route path="/bracelets" element={<BraceletsPage />} />
 
