@@ -12,6 +12,10 @@ import RingsPage from "./pages/Rings/RingsPage";
 
 
 import NecklacePage from "./pages/Necklaces/NecklacesPage";
+import EarringsPage from "./pages/Earrings/EarringsPage";
+
+
+
 
 
 export default function App() {
@@ -40,6 +44,7 @@ export default function App() {
 
           {/* ✅ Necklace routes */}
           <Route path="/necklaces" element={<NecklacePage />} />
+		  <Route path="/earrings" element={<EarringsPage />} />
         
 
           <Route path="/about-us" element={<div style={{ padding: 16 }}>ABOUT</div>} />
