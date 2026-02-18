@@ -20,13 +20,11 @@ type CartState = {
   removeItem: (id: string) => void;
   increase: (id: string) => void;
   decrease: (id: string) => void;
-  clear: () => void;
 
-  totalCount: () => number;
-  totalPrice: () => number;
+  clearCart: () => void;
 };
 
-export const useCartStore = create<CartState>((set, get) => ({
+export const useCartStore = create<CartState>((set) => ({
   isCartOpen: false,
   items: [],
 
@@ -61,8 +59,5 @@ export const useCartStore = create<CartState>((set, get) => ({
         .filter((x) => x.qty > 0),
     })),
 
-  clear: () => set({ items: [] }),
-
-  totalCount: () => get().items.reduce((sum, x) => sum + x.qty, 0),
-  totalPrice: () => get().items.reduce((sum, x) => sum + x.price * x.qty, 0),
+  clearCart: () => set({ items: [] }),
 }));

@@ -19,7 +19,15 @@
 
 .left,
 .right {
-  background: rgba(17, 17, 17, 0.85);
+background: linear-gradient(
+  135deg,
+  #F6E27A 0%,
+  #D4AF37 40%,
+  #C9A227 70%,
+  #A67C00 100%
+);
+
+
   border: 1px solid #2a2a2a;
   border-radius: 14px;
   padding: 16px;
@@ -86,3 +94,31 @@
   box-sizing: border-box;
   max-width: 100%;
 }
+/* Responsive */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .left,
+  .right {
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .title {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 16px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+}
+

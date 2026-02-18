@@ -4,8 +4,11 @@ type Props = { className?: string };
 
 export default function CartButton({ className }: Props) {
   const toggleCart = useCartStore((s) => s.toggleCart);
-  const totalCount = useCartStore((s) => s.totalCount());
-console.count("CartButton render");
+
+ 
+  const totalCount = useCartStore((s) =>
+    s.items.reduce((sum, item) => sum + item.qty, 0)
+  );
 
   return (
     <button
@@ -28,7 +31,6 @@ console.count("CartButton render");
         WebkitTapHighlightColor: "transparent",
       }}
     >
-      {/* Cart icon (white via currentColor) */}
       <svg
         width="20"
         height="20"
@@ -42,7 +44,6 @@ console.count("CartButton render");
         />
       </svg>
 
-      {/* Badge */}
       {totalCount > 0 && (
         <span
           style={{

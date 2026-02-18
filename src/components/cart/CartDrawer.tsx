@@ -1,5 +1,13 @@
+import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCartStore } from "../../store/cartStore";
+
+function formatEUR(value: number) {
+  return new Intl.NumberFormat("de-DE", {
+    style: "currency",
+    currency: "EUR",
+  }).format(value);
+}
 
 export default function CartDrawer() {
   const navigate = useNavigate();
@@ -11,7 +19,10 @@ export default function CartDrawer() {
   const increase = useCartStore((s) => s.increase);
   const decrease = useCartStore((s) => s.decrease);
   const removeItem = useCartStore((s) => s.removeItem);
-  const totalPrice = useCartStore((s) => s.totalPrice());
+
+  const totalPrice = useMemo(() => {
+    return items.reduce((sum, x) => sum + x.price * x.qty, 0);
+  }, [items]);
 
   if (!isOpen) return null;
 
@@ -53,7 +64,14 @@ export default function CartDrawer() {
           overflow: "auto",
         }}
       >
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12 }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            gap: 12,
+          }}
+        >
           <h3 style={{ margin: 0 }}>Cart</h3>
           <button type="button" onClick={closeCart} aria-label="Close cart">
             ✕
@@ -73,18 +91,35 @@ export default function CartDrawer() {
                   borderRadius: 10,
                 }}
               >
-                <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    gap: 12,
+                  }}
+                >
                   <div>
                     <div style={{ fontWeight: 600 }}>{it.name}</div>
-                    <div style={{ opacity: 0.8 }}>{it.price} kr</div>
+                    <div style={{ opacity: 0.8 }}>{formatEUR(it.price)}</div>
                   </div>
 
-                  <button type="button" onClick={() => removeItem(it.id)} aria-label="Remove item">
+                  <button
+                    type="button"
+                    onClick={() => removeItem(it.id)}
+                    aria-label="Remove item"
+                  >
                     🗑️
                   </button>
                 </div>
 
-                <div style={{ marginTop: 10, display: "flex", alignItems: "center", gap: 8 }}>
+                <div
+                  style={{
+                    marginTop: 10,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 8,
+                  }}
+                >
                   <button type="button" onClick={() => decrease(it.id)}>
                     -
                   </button>
@@ -101,7 +136,7 @@ export default function CartDrawer() {
         <div style={{ marginTop: 16, borderTop: "1px solid #333", paddingTop: 12 }}>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <span>Total</span>
-            <strong>{totalPrice} kr</strong>
+            <strong>{formatEUR(totalPrice)}</strong>
           </div>
 
           <button
