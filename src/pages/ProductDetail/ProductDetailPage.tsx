@@ -164,7 +164,7 @@ export default function ProductDetailPage() {
           <div className={styles.heroInfo}>
             <div className={styles.topText}>
               <p className={styles.kicker}>
-                {product.material || "18k rose gold with round brilliant diamonds"}
+                {product.material || "18k gold "}
               </p>
               <h1 className={styles.title}>{product.name}</h1>
             </div>
