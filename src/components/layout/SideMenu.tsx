@@ -11,7 +11,6 @@ export default function SideMenu({ links = [] }: Props) {
   const isOpen = useUiStore((s) => s.isSideMenuOpen);
   const closeMenu = useUiStore((s) => s.closeSideMenu);
 
-  // close on Escape
   useEffect(() => {
     if (!isOpen) return;
 

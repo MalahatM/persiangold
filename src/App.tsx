@@ -18,6 +18,8 @@ import EarringsPage from "./pages/Earrings/EarringsPage";
 import BraceletsPage from "./pages/Bracelets/BraceletsPage";
 import ProductDetailPage from "./pages/ProductDetail/ProductDetailPage";
 import CheckoutPage from "./pages/Checkout/CheckoutPage";
+import AboutPage from "./pages/About/AboutPage";
+
 
 
 
@@ -25,14 +27,13 @@ import CheckoutPage from "./pages/Checkout/CheckoutPage";
 
 
 export default function App() {
-  const links = [
-    { label: "Home", href: "/" },
-    { label: "Gallery", href: "/gallery" },
-
-    { label: "About us", href: "/about-us" },
-    { label: "Booking", href: "/booking" },
-    { label: "Contact us", href: "/contact-us" },
-  ];
+ const links = [
+  { label: "Home", href: "/" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "About us", href: "/about" },   
+  { label: "Booking", href: "/booking" },
+  { label: "Contact us", href: "/contact-us" },
+];
 
   return (
     <>
@@ -55,10 +56,12 @@ export default function App() {
 		  <Route path="/bracelets" element={<BraceletsPage />} />
 		  <Route path="/product/:id" element={<ProductDetailPage />} />
 		  <Route path="/checkout" element={<CheckoutPage />} />
+		 <Route path="/about" element={<AboutPage />} />
+
+
 
         
 
-          <Route path="/about-us" element={<div style={{ padding: 16 }}>ABOUT</div>} />
           <Route path="/booking" element={<div style={{ padding: 16 }}>BOOKING</div>} />
           <Route path="/contact-us" element={<div style={{ padding: 16 }}>CONTACT</div>} />
           <Route path="*" element={<div style={{ padding: 16 }}>Not found</div>} />
