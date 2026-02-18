@@ -17,6 +17,7 @@ import EarringsPage from "./pages/Earrings/EarringsPage";
 
 import BraceletsPage from "./pages/Bracelets/BraceletsPage";
 import ProductDetailPage from "./pages/ProductDetail/ProductDetailPage";
+import CheckoutPage from "./pages/Checkout/CheckoutPage";
 
 
 
@@ -53,6 +54,7 @@ export default function App() {
 		  {/* ✅ Bracelet routes */}
 		  <Route path="/bracelets" element={<BraceletsPage />} />
 		  <Route path="/product/:id" element={<ProductDetailPage />} />
+		  <Route path="/checkout" element={<CheckoutPage />} />
 
         
 
