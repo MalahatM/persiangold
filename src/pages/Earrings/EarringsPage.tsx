@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom"; 
 import { db } from "../../firebase";
 import SortDropdown from "../../components/sort/SortDropdown";
 import type { SortKey } from "../../components/sort/sort.types";
@@ -20,6 +20,8 @@ export default function EarringsPage() {
 
   const [searchParams] = useSearchParams();
   const sort = (searchParams.get("sort") as SortKey) || null;
+
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const fetchEarrings = async () => {
@@ -73,7 +75,18 @@ export default function EarringsPage() {
 
       <div className={styles.grid}>
         {sortedProducts.map((p) => (
-          <article key={p.id} className={styles.card}>
+          <article
+            key={p.id}
+            className={styles.card}
+            onClick={() => navigate(`/product/${p.id}`)} 
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                navigate(`/product/${p.id}`);
+              }
+            }}
+          >
             <img src={p.imageUrl} alt={p.name} className={styles.image} />
             <div className={styles.cardBody}>
               <h3>{p.name}</h3>
