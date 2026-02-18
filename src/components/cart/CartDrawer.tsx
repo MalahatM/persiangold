@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import { useCartStore } from "../../store/cartStore";
 
 export default function CartDrawer() {
+  const navigate = useNavigate();
+
   const isOpen = useCartStore((s) => s.isCartOpen);
   const closeCart = useCartStore((s) => s.closeCart);
 
@@ -12,6 +15,12 @@ export default function CartDrawer() {
 
   if (!isOpen) return null;
 
+  const handleCheckout = () => {
+    if (items.length === 0) return;
+    closeCart();
+    navigate("/checkout");
+  };
+
   return (
     <div
       role="dialog"
@@ -21,13 +30,11 @@ export default function CartDrawer() {
         position: "absolute",
         inset: 0,
         zIndex: 50,
-
         background: "rgba(0,0,0,0.25)",
-
         display: "flex",
         justifyContent: "flex-end",
         alignItems: "flex-start",
-        padding: 16, 
+        padding: 16,
       }}
     >
       <div
@@ -35,25 +42,18 @@ export default function CartDrawer() {
         style={{
           width: 320,
           maxWidth: "92%",
-          height: "55%",          
-          marginTop: 8,           
+          height: "55%",
+          marginTop: 8,
           background: "#111",
           color: "#fff",
           padding: 16,
-          borderRadius: 16,   
+          borderRadius: 16,
           border: "1px solid #2a2a2a",
           boxShadow: "0 12px 40px rgba(0,0,0,0.45)",
-          overflow: "auto",     
+          overflow: "auto",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            gap: 12,
-          }}
-        >
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12 }}>
           <h3 style={{ margin: 0 }}>Cart</h3>
           <button type="button" onClick={closeCart} aria-label="Close cart">
             ✕
@@ -73,34 +73,18 @@ export default function CartDrawer() {
                   borderRadius: 10,
                 }}
               >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    gap: 12,
-                  }}
-                >
+                <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
                   <div>
                     <div style={{ fontWeight: 600 }}>{it.name}</div>
-                    <div style={{ opacity: 0.8 }}>{it.price} £</div>
+                    <div style={{ opacity: 0.8 }}>{it.price} kr</div>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => removeItem(it.id)}
-                    aria-label="Remove item"
-                  >
+
+                  <button type="button" onClick={() => removeItem(it.id)} aria-label="Remove item">
                     🗑️
                   </button>
                 </div>
 
-                <div
-                  style={{
-                    marginTop: 10,
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 8,
-                  }}
-                >
+                <div style={{ marginTop: 10, display: "flex", alignItems: "center", gap: 8 }}>
                   <button type="button" onClick={() => decrease(it.id)}>
                     -
                   </button>
@@ -117,8 +101,27 @@ export default function CartDrawer() {
         <div style={{ marginTop: 16, borderTop: "1px solid #333", paddingTop: 12 }}>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <span>Total</span>
-            <strong>{totalPrice} £</strong>
+            <strong>{totalPrice} kr</strong>
           </div>
+
+          <button
+            type="button"
+            onClick={handleCheckout}
+            disabled={items.length === 0}
+            style={{
+              marginTop: 12,
+              width: "100%",
+              height: 44,
+              borderRadius: 12,
+              border: "1px solid #2a2a2a",
+              background: items.length === 0 ? "#222" : "#e6e6e6",
+              color: items.length === 0 ? "#777" : "#111",
+              cursor: items.length === 0 ? "not-allowed" : "pointer",
+              fontWeight: 700,
+            }}
+          >
+            Checkout
+          </button>
         </div>
       </div>
     </div>
