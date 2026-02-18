@@ -200,7 +200,7 @@ export default function ProductDetailPage() {
           ) : (
             <p className={styles.storyTextMuted}>
              
-              <code>story</code> یا <code>description</code> 
+              <code>story</code> or <code>description</code> 
             </p>
           )}
         </section>
