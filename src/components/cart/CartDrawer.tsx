@@ -82,7 +82,7 @@ export default function CartDrawer() {
                 >
                   <div>
                     <div style={{ fontWeight: 600 }}>{it.name}</div>
-                    <div style={{ opacity: 0.8 }}>{it.price} kr</div>
+                    <div style={{ opacity: 0.8 }}>{it.price} £</div>
                   </div>
                   <button
                     type="button"
@@ -117,7 +117,7 @@ export default function CartDrawer() {
         <div style={{ marginTop: 16, borderTop: "1px solid #333", paddingTop: 12 }}>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <span>Total</span>
-            <strong>{totalPrice} kr</strong>
+            <strong>{totalPrice} £</strong>
           </div>
         </div>
       </div>
