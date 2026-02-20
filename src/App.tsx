@@ -19,6 +19,7 @@ import BraceletsPage from "./pages/Bracelets/BraceletsPage";
 import ProductDetailPage from "./pages/ProductDetail/ProductDetailPage";
 import CheckoutPage from "./pages/Checkout/CheckoutPage";
 import AboutPage from "./pages/About/AboutPage";
+import BookingPage from "./pages/Booking/BookingPage";
 
 
 
@@ -49,14 +50,14 @@ export default function App() {
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/rings" element={<RingsPage />} />
 
-          {/* ✅ Necklace routes */}
           <Route path="/necklaces" element={<NecklacePage />} />
 		  <Route path="/earrings" element={<EarringsPage />} />
-		  {/* ✅ Bracelet routes */}
+		
 		  <Route path="/bracelets" element={<BraceletsPage />} />
 		  <Route path="/product/:id" element={<ProductDetailPage />} />
 		  <Route path="/checkout" element={<CheckoutPage />} />
 		 <Route path="/about" element={<AboutPage />} />
+		 <Route path="/booking" element={<BookingPage />} />
 
 
 
