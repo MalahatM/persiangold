@@ -1,5 +1,6 @@
 import "./Footer.css";
-import { Facebook, Instagram } from "lucide-react";
+import { Facebook, Instagram, Lock } from "lucide-react";
+import { Link } from "react-router-dom";
 
 type Props = {
   ownerText?: string;
@@ -10,7 +11,6 @@ export default function Footer({
 }: Props) {
   return (
     <footer className="siteFooter">
-
       <div className="siteFooter__content">
         <div className="siteFooter__col">
           <h3 className="siteFooter__title">Follow Us</h3>
@@ -34,8 +34,17 @@ export default function Footer({
         </div>
       </div>
 
+     
       <div className="siteFooter__owner">
-        {ownerText}
+        <span>{ownerText}</span>
+
+        <Link
+          to="/admin-login"
+          aria-label="Admin login"
+          className="siteFooter__lockInline"
+        >
+          <Lock size={18} />
+        </Link>
       </div>
 
       <div className="siteFooter__bottom">
