@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import styles from "./CheckoutPage.module.css";
+import { z } from "zod";
 
 import { useCartStore } from "../../store/cartStore";
 
@@ -16,9 +17,44 @@ type CheckoutFormData = {
   address: string;
 };
 
+const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ\u0600-\u06FF\s'-]{2,40}$/;
+
+
+
+const phoneRegex = /^\+?\d+$/;
+
+const checkoutSchema = z.object({
+  firstName: z
+    .string()
+    .trim()
+    .min(1, "First name is required.")
+    .refine((v) => nameRegex.test(v), "First name must contain letters only."),
+  lastName: z
+    .string()
+    .trim()
+    .min(1, "Last name is required.")
+    .refine((v) => nameRegex.test(v), "Last name must contain letters only."),
+  phone: z
+    .string()
+    .trim()
+    .min(1, "Phone is required.")
+    
+    .transform((v) => v.replace(/[\s()-]/g, ""))
+    .refine((v) => phoneRegex.test(v), "Please write your phone number correctly.")
+    .refine((v) => {
+      const digits = v.startsWith("+") ? v.slice(1) : v;
+      return digits.length >= 7 && digits.length <= 15;
+    }, "Phone length is invalid."),
+  address: z
+    .string()
+    .trim()
+    .min(1, "Address is required.")
+    .min(10, "Address is too short."),
+});
+
 export default function CheckoutPage() {
   const items = useCartStore((s) => s.items);
-  const clearCart = useCartStore((s) => s.clearCart); 
+  const clearCart = useCartStore((s) => s.clearCart);
 
   const [form, setForm] = useState<CheckoutFormData>({
     firstName: "",
@@ -39,31 +75,29 @@ export default function CheckoutPage() {
 
   const total = subtotal + shipping;
 
-  const isValid =
-    form.firstName.trim().length > 0 &&
-    form.lastName.trim().length > 0 &&
-    form.phone.trim().length > 0 &&
-    form.address.trim().length > 0;
-
   const handleConfirm = () => {
     setError(null);
 
-    if (success) return; 
+    if (success) return;
 
     if (!items.length) {
       setError("Your cart is empty.");
       return;
     }
 
-    if (!isValid) {
-      setError("Please fill in all required fields.");
+    const parsed = checkoutSchema.safeParse(form);
+
+    if (!parsed.success) {
+     
+      setError(parsed.error.issues[0].message);
       return;
     }
 
-    // ✅ موفق
+    
+    setForm(parsed.data);
+
     setSuccess(true);
-    setError(null);
-    clearCart(); 
+    clearCart();
   };
 
   return (
