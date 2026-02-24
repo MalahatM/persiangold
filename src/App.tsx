@@ -28,7 +28,7 @@ export default function App() {
     { label: "Gallery", href: "/gallery" },
     { label: "About us", href: "/about" },
     { label: "Booking", href: "/booking" },
-    { label: "Contact us", href: "/contact-us" },
+    
   ];
 
   const { pathname } = useLocation();
@@ -53,10 +53,7 @@ export default function App() {
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/booking" element={<BookingPage />} />
-          <Route
-            path="/contact-us"
-            element={<div style={{ padding: 16 }}>CONTACT</div>}
-          />
+         
 
           {/* Admin */}
           <Route path="/admin-login" element={<AdminLoginPage />} />
