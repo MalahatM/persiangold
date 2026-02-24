@@ -57,3 +57,13 @@
 .sideMenuLink:hover{
   opacity: 1;
 }
+.sideMenuLink.active {
+  border-left: 3px solid #fff;
+  padding-left: 8px;
+}
+/* Desktop: SideMenu completely disabled */
+@media (min-width: 992px) {
+  .sideMenuOverlay {
+    display: none !important;
+  }
+}

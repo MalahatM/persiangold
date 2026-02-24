@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { useUiStore } from "../../store/uiStore";
 import "./SideMenu.css";
 
@@ -9,26 +10,38 @@ export default function SideMenu({ links = [] }: Props) {
   const isOpen = useUiStore((s) => s.isSideMenuOpen);
   const closeMenu = useUiStore((s) => s.closeSideMenu);
 
+ 
+  if (!isOpen) return null;
+
   return (
     <div
       role="dialog"
       aria-modal="true"
-      className={`sideMenuOverlay ${isOpen ? "is-open" : ""}`}
+      className="sideMenuOverlay is-open"
       onClick={closeMenu}
     >
-      <div
-        className={`sideMenuPanel ${isOpen ? "is-open" : ""}`}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <button type="button" onClick={closeMenu} aria-label="Close menu" className="sideMenuClose">
+      <div className="sideMenuPanel is-open" onClick={(e) => e.stopPropagation()}>
+        <button
+          type="button"
+          onClick={closeMenu}
+          aria-label="Close menu"
+          className="sideMenuClose"
+        >
           ×
         </button>
 
         <nav className="sideMenuNav">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="sideMenuLink" onClick={closeMenu}>
+            <NavLink
+              key={l.href}
+              to={l.href}
+              className={({ isActive }) =>
+                isActive ? "sideMenuLink active" : "sideMenuLink"
+              }
+              onClick={closeMenu}
+            >
               {l.label}
-            </a>
+            </NavLink>
           ))}
         </nav>
       </div>

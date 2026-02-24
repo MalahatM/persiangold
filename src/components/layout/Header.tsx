@@ -1,17 +1,43 @@
-import "./Header.css";
+import { Link, NavLink } from "react-router-dom";
+import CartButton from "../cart/CartButton";
 import HamburgerButton from "./HamburgerButton";
+import "./Header.css";
 
-type Props = {
-  brand?: string;
+type LinkItem = { label: string; href: string };
+
+type HeaderProps = {
+  brand: string;
+  links: LinkItem[];
 };
 
-export default function Header({ brand = "Persian Gold" }: Props) {
+export default function Header({ brand, links }: HeaderProps) {
   return (
-    <header className="siteHeader">
-      <div className="siteHeader__brand">{brand}</div>
+    <header className="header">
+      <div className="headerInner">
+        <Link to="/" className="brand">
+          {brand}
+        </Link>
 
-      <div className="siteHeader__actions">
-        <HamburgerButton className="siteHeader__hamburger" />
+        <div className="headerRight">
+          <nav className="nav" aria-label="Primary">
+            {links.map((l) => (
+              <NavLink
+                key={l.href}
+                to={l.href}
+                className={({ isActive }) =>
+                  isActive ? "navLink active" : "navLink"
+                }
+              >
+                {l.label}
+              </NavLink>
+            ))}
+          </nav>
+
+          <div className="headerActions">
+            <CartButton className="cartBtn" />
+            <HamburgerButton className="hamburgerOnly" />
+          </div>
+        </div>
       </div>
     </header>
   );

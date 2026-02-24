@@ -1,0 +1,15 @@
+.hamburgerBtn {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: rgba(255,255,255,0.06);
+  color: #d4af37;        
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.hamburgerBtn:hover {
+  color: #f1c84b;         
+}
