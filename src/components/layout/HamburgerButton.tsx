@@ -1,8 +1,11 @@
 import { useUiStore } from "../../store/uiStore";
 import { Menu } from "lucide-react";
-import "./HamburgerButton.css";
 
-export default function HamburgerButton({ className }: { className?: string }) {
+type Props = {
+  className?: string;
+};
+
+export default function HamburgerButton({ className }: Props) {
   const toggleMenu = useUiStore((s) => s.toggleSideMenu);
 
   return (
@@ -10,7 +13,7 @@ export default function HamburgerButton({ className }: { className?: string }) {
       type="button"
       aria-label="Open menu"
       onClick={toggleMenu}
-      className={`hamburgerBtn ${className ?? ""}`}
+      className={className}
     >
       <Menu size={22} strokeWidth={2} />
     </button>

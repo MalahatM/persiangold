@@ -14,10 +14,12 @@ export default function Header({ brand, links }: HeaderProps) {
   return (
     <header className="header">
       <div className="headerInner">
+        {/* Left: Brand */}
         <Link to="/" className="brand">
           {brand}
         </Link>
 
+        {/* Right side */}
         <div className="headerRight">
           <nav className="nav" aria-label="Primary">
             {links.map((l) => (
@@ -34,7 +36,7 @@ export default function Header({ brand, links }: HeaderProps) {
           </nav>
 
           <div className="headerActions">
-            <CartButton className="cartBtn" />
+            <CartButton />
             <HamburgerButton className="hamburgerOnly" />
           </div>
         </div>
