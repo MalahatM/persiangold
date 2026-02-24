@@ -9,20 +9,74 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 0 18px;
+  gap: 16px;
 }
 
+/* Left: brand */
+.brand {
+ color: #d4af37; 
+  font-size: 28px;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.6px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Right side container (ALWAYS on the right) */
+.headerRight {
+  margin-left: auto;          
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Navbar (desktop only) */
+.nav {
+  align-items: center;
+  gap: 18px;
+}
+
+.navLink {
+  color: #f5f5f5;
+  text-decoration: none;
+  opacity: 0.85;
+  font-size: 16px;
+  transition: all 0.25s ease;
+}
+
+/* hover subtle */
+.navLink:hover {
+  opacity: 1;
+}
+
+
+.navLink.active {
+  color: #d4af37;               
+  font-weight: 700;              
+  opacity: 1;
+  text-shadow: 0 0 8px rgba(212,175,55,0.6);
+}
+/* Actions (cart always, hamburger only mobile) */
 .headerActions {
   display: inline-flex;
   align-items: center;
   gap: 12px;
 }
-.brand {
-  margin: 0;
-  color: #f5f5f5;
-  font-size: 28px;
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: 0.6px;
+
+/* mobile: show hamburger */
+.hamburgerOnly {
+  display: inline-flex;
+}
+
+/* desktop */
+@media (min-width: 992px) {
+  .nav {
+    display: flex;               
+  }
+
+  .hamburgerOnly {
+    display: none;              
+  }
 }

@@ -2,8 +2,8 @@ import "./App.css";
 import { Routes, Route, useLocation } from "react-router-dom";
 
 import Header from "./components/layout/Header";
-import Footer from "./components/layout/Footer";
 import SideMenu from "./components/layout/SideMenu";
+import Footer from "./components/layout/Footer";
 import CartDrawer from "./components/cart/CartDrawer";
 
 import Home from "./pages/Home";
@@ -35,14 +35,12 @@ export default function App() {
   const isAdminRoute = pathname.startsWith("/admin");
 
   return (
-    <>
-      <div className="appHeaderWrap">
-        <Header />
-      </div>
+    <div className="appShell">
+      <Header brand="Persian Gold" links={links} />
 
       {!isAdminRoute && <SideMenu links={links} />}
 
-      <div className="appMain">
+      <main className="appMain">
         <Routes>
           {/* Public */}
           <Route path="/" element={<Home />} />
@@ -68,11 +66,11 @@ export default function App() {
 
           <Route path="*" element={<div style={{ padding: 16 }}>Not found</div>} />
         </Routes>
-      </div>
+      </main>
 
       {!isAdminRoute && <Footer />}
 
       <CartDrawer />
-    </>
+    </div>
   );
 }

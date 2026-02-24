@@ -26,7 +26,7 @@ export default function CartButton({ className }: Props) {
         borderRadius: 10,
         border: "1px solid rgba(255,255,255,0.18)",
         background: "rgba(255,255,255,0.06)",
-        color: "#fff",
+        color: "#d4af37",
         cursor: "pointer",
         WebkitTapHighlightColor: "transparent",
       }}

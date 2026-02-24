@@ -1,10 +1,21 @@
-.appHeaderWrap {
-  position: relative;
+.appShell{
+  
+   min-height: 100vh;
+  width: 100%;
+  background: #0b0b0b;
+  color: #fff;
 }
-
-.appCartBtn {
-  position: absolute;
-  top: 12px;
-  right: 72px;
-  z-index: 1000;
+html, body {
+  height: 100%;
+  background: #0b0b0b;
+}
+.appMain{
+  padding: 28px;
+  .appMain{
+  width: 100%;
+ 
+}
+}
+@media (max-width: 640px){
+  .appMain{ padding: 16px; }
 }
