@@ -27,7 +27,7 @@ export default function Footer({
         <div className="siteFooter__col siteFooter__col--right">
           <h3 className="siteFooter__title">Contact Us</h3>
           <div className="siteFooter__contact">
-            <div>📞 046782926</div>
+            <div>📞 +98782926</div>
             <div>✉ email@persiangold.com</div>
             <div>📍Address:Iran mall 2e floor nummer 396</div>
           </div>
