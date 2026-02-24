@@ -12,7 +12,7 @@
   display: flex;
   justify-content: flex-end;
 
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0);
 
   opacity: 0;
   visibility: hidden;
@@ -20,17 +20,20 @@
 
   transition:
     opacity var(--side-menu-anim-ms) ease,
-    visibility 0s linear var(--side-menu-anim-ms);
+    visibility 0s linear var(--side-menu-anim-ms),
+    background var(--side-menu-anim-ms) ease;
 }
 
-.sideMenuOverlay.isOpen {
+.sideMenuOverlay.is-open {
+  background: rgba(0, 0, 0, 0.4);
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 
   transition:
     opacity var(--side-menu-anim-ms) ease,
-    visibility 0s linear 0s;
+    visibility 0s linear 0s,
+    background var(--side-menu-anim-ms) ease;
 }
 
 /* Panel */
@@ -49,10 +52,9 @@
   will-change: transform;
 }
 
-.sideMenuPanel.isOpen {
+.sideMenuPanel.is-open {
   transform: translateX(0);
 }
-
 /* Top row */
 .sideMenuTop {
   display: flex;
@@ -88,19 +90,31 @@
   text-decoration: none;
 
   padding: 10px 12px;
-  border-radius: 10px;
+  border-radius: 14px;
 
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.04);
+
+  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease, color 140ms ease;
 }
 
 .sideMenuLink:hover {
   background: rgba(255, 255, 255, 0.08);
 }
+
+
 .sideMenuLink.active {
-  border-left: 3px solid #fff;
-  padding-left: 8px;
+  border-left: none;                
+  padding-left: 12px;               
+
+  color: #d4af37;                    
+  font-weight: 800;                  
+
+  border-color: rgba(212, 175, 55, 0.45);
+  box-shadow: 0 0 14px rgba(212, 175, 55, 0.18);
+  background: rgba(212, 175, 55, 0.08);
 }
+
 /* Desktop: SideMenu completely disabled */
 @media (min-width: 992px) {
   .sideMenuOverlay {
