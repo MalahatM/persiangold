@@ -237,7 +237,7 @@ export default function BookingPage() {
                 className={styles.input}
                 value={form.phone}
                 onChange={(e) => setForm((p) => ({ ...p, phone: e.target.value }))}
-                placeholder="+46 …"
+                placeholder="+98 …"
                 autoComplete="tel"
               />
             </label>
