@@ -29,3 +29,4 @@ distServer/
 *.njsproj
 *.sln
 *.sw?
+.firebase/
