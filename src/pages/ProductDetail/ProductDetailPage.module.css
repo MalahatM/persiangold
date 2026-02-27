@@ -1,0 +1,217 @@
+.page {
+  min-height: 100%;
+  padding: 18px 14px 30px;
+  background: #0b0b0e;
+  color: #f3f3f7;
+}
+
+.container {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* HERO */
+.hero {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+}
+
+.heroMedia {
+  background: rgba(255, 255, 255, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  min-height: 280px;
+}
+
+.image {
+  width: min(420px, 100%);
+  height: auto;
+  border-radius: 14px;
+  display: block;
+  object-fit: cover;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.heroInfo {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.topText {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.kicker {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  margin: 0;
+}
+
+/* bullets */
+.bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bulletItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.8);
+  flex: 0 0 auto;
+}
+
+.priceRow {
+  margin-top: 4px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.priceLabel {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.priceValue {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* button */
+.addButton {
+  margin-top: 6px;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.92);
+  color: #0b0b0e;
+  transition: transform 120ms ease, opacity 120ms ease;
+}
+
+.addButton:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.addButton:active {
+  transform: translateY(0px);
+  opacity: 0.88;
+}
+
+/* STORY BOX */
+.storyBox {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 16px 18px;
+}
+
+.storyTitle {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.storyText {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.storyTextMuted {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* skeletons */
+.skeletonHero {
+  height: 340px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.skeletonBox {
+  height: 160px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* error */
+.errorCard {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 18px;
+}
+
+.errorTitle {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.errorText {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* responsive */
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .heroMedia {
+    padding: 14px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+}

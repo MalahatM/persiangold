@@ -1,0 +1,127 @@
+.siteFooter {
+  background: #0b0b0b;
+  color: rgba(255, 255, 255, 0.9);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 28px 28px 16px; 
+  position: relative;
+}
+
+.siteFooter__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px; 
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.siteFooter__title {
+  font-size: 16px;       
+  font-weight: 600;
+  margin-bottom: 10px;     
+  letter-spacing: 0.3px;
+}
+
+.siteFooter__socials {
+  display: flex;
+  gap: 10px; 
+}
+
+.siteFooter__icon {
+  width: 40px;   
+  height: 40px; 
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  transition: all 0.25s ease;
+}
+
+.siteFooter__icon:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.siteFooter__col--right {
+  justify-self: end;
+}
+
+.siteFooter__contact {
+  display: grid;
+  gap: 8px;       
+  opacity: 0.85;
+  font-size: 14px;
+}
+
+
+.siteFooter__owner {
+  margin-top: 18px;    
+  padding-top: 14px;    
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 13px;
+  opacity: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;            
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.siteFooter__lockInline {
+  width: 30px; 
+  height: 30px; 
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  color: #d4af37;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.siteFooter__lockInline:hover {
+  transform: translateY(-1px);
+  background: rgba(212, 175, 55, 0.18);
+  border-color: rgba(212, 175, 55, 0.65);
+}
+
+.siteFooter__lockInline:focus-visible {
+  outline: 2px solid rgba(212, 175, 55, 0.6);
+  outline-offset: 4px;
+}
+
+.siteFooter__bottom {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .siteFooter {
+    padding: 22px 16px 14px; 
+  }
+
+  .siteFooter__content {
+    grid-template-columns: 1fr;
+    gap: 16px; 
+    text-align: center;
+  }
+
+  .siteFooter__col--right {
+    justify-self: center;
+  }
+
+  .siteFooter__socials {
+    justify-content: center;
+  }
+
+  .siteFooter__owner {
+    margin-top: 14px;
+    padding-top: 12px;
+  }
+}
