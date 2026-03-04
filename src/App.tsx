@@ -21,6 +21,7 @@ import BookingPage from "./pages/Booking/BookingPage";
 import AdminLoginPage from "./pages/AdminLogin/AdminLoginPage";
 import AdminPage from "./pages/Admin/AdminPage";
 import ProtectedAdminRoute from "./routes/ProtectedAdminRoute";
+import AdminBookingsPage from "./pages/Admin/AdminBookingsPage";
 
 export default function App() {
   const links = [
@@ -28,11 +29,10 @@ export default function App() {
     { label: "Gallery", href: "/gallery" },
     { label: "About us", href: "/about" },
     { label: "Booking", href: "/booking" },
-    
   ];
 
   const { pathname } = useLocation();
-  const isAdminRoute = pathname.startsWith("/admin");
+  const isAdminRoute = pathname.startsWith("/admin"); 
 
   return (
     <div className="appShell">
@@ -53,13 +53,13 @@ export default function App() {
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/booking" element={<BookingPage />} />
-         
 
           {/* Admin */}
           <Route path="/admin-login" element={<AdminLoginPage />} />
-          <Route element={<ProtectedAdminRoute />}>
-            <Route path="/admin" element={<AdminPage />} />
-          </Route>
+         <Route element={<ProtectedAdminRoute />}>
+  <Route path="/admin" element={<AdminPage />} />
+  <Route path="/admin/bookings" element={<AdminBookingsPage />} />
+</Route>
 
           <Route path="*" element={<div style={{ padding: 16 }}>Not found</div>} />
         </Routes>

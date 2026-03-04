@@ -1,0 +1,150 @@
+.wrapper { padding: 32px; }
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.headerActions { display: flex; gap: 12px; }
+
+.secondaryBtn {
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  cursor: pointer;
+}
+
+.controls { display: flex; gap: 12px; margin: 16px 0 10px; }
+
+.search {
+  width: min(720px, 100%);
+  padding: 12px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(0,0,0,0.35);
+  color: #fff;
+  outline: none;
+}
+
+.loading { padding: 12px 0; opacity: 0.85; }
+
+.error {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255,0,0,0.12);
+  border: 1px solid rgba(255,0,0,0.22);
+}
+
+.count { margin: 10px 0 14px; opacity: 0.85; }
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  border-radius: 18px;
+  padding: 16px;
+  border: 1px solid rgba(255,255,255,0.12);
+ background: linear-gradient(180deg, rgba(255, 215, 120, 0.95), rgba(180, 120, 20, 0.95));
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.date { font-size: 18px; font-weight: 700; }
+
+
+
+.meta { display: grid; gap: 8px; font-size: 14px; opacity: 0.95; }
+
+.meta span { opacity: 0.7; }
+
+.empty { padding: 16px; opacity: 0.8; }
+.cardActions {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+}
+
+.dangerBtn {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,80,80,0.8);
+  background:  #d2180e;
+  color: #090909;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.dangerBtn:hover {
+  background: rgba(255,80,80,0.12);
+}
+@media (max-width: 360px) {
+  .wrapper {
+    padding: 16px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .headerActions {
+    width: 100%;
+  }
+
+  .secondaryBtn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .controls {
+    margin: 12px 0 8px;
+  }
+
+  .search {
+    width: 100%;
+    padding: 10px 12px;
+  }
+
+  .list {
+    grid-template-columns: 1fr; 
+    gap: 12px;
+  }
+
+  .card {
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .date {
+    font-size: 16px;
+  }
+
+  .meta {
+    font-size: 13px;
+    gap: 6px;
+  }
+
+  .cardActions {
+    margin-top: 10px;
+  }
+
+  .dangerBtn {
+    width: 100%;
+  }
+}
