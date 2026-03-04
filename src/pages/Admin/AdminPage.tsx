@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
+import { useNavigate } from "react-router-dom";
 import {
   getProducts,
   updateProduct,
@@ -22,6 +23,8 @@ const CATEGORY_OPTIONS = ["rings", "earrings", "bracelets", "necklaces"] as cons
 type Category = (typeof CATEGORY_OPTIONS)[number];
 
 export default function AdminPage() {
+  const navigate = useNavigate();
+
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -32,7 +35,7 @@ export default function AdminPage() {
   const [savedId, setSavedId] = useState<string | null>(null);
   const [errorId, setErrorId] = useState<string | null>(null);
 
-  //  Add Product form state
+  // Add Product form state
   const [showAdd, setShowAdd] = useState(false);
   const [newName, setNewName] = useState("");
   const [newCategory, setNewCategory] = useState<Category>("rings");
@@ -52,7 +55,8 @@ export default function AdminPage() {
         setLoading(false);
       }
     };
-    fetchProducts();
+
+    void fetchProducts();
   }, []);
 
   const categories = useMemo(() => {
@@ -64,8 +68,7 @@ export default function AdminPage() {
   const filteredProducts = useMemo(() => {
     const q = query.trim().toLowerCase();
     return products.filter((p) => {
-      const matchCategory =
-        selectedCategory === "all" || p.category === selectedCategory;
+      const matchCategory = selectedCategory === "all" || p.category === selectedCategory;
       const matchQuery = q === "" || p.name.toLowerCase().includes(q);
       return matchCategory && matchQuery;
     });
@@ -73,13 +76,10 @@ export default function AdminPage() {
 
   const handleLogout = async () => {
     await signOut(auth);
+    navigate("/admin-login", { replace: true });
   };
 
-  const handleChange = (
-    id: string,
-    field: "price" | "imageUrl",
-    value: string
-  ) => {
+  const handleChange = (id: string, field: "price" | "imageUrl", value: string) => {
     setProducts((prev) =>
       prev.map((p) => {
         if (p.id !== id) return p;
@@ -109,7 +109,6 @@ export default function AdminPage() {
     }
   };
 
-  //  Hard delete
   const handleDelete = async (id: string) => {
     const ok = window.confirm("Delete this product permanently?");
     if (!ok) return;
@@ -122,7 +121,6 @@ export default function AdminPage() {
     }
   };
 
-  // Add product
   const handleAddProduct = async (e: React.FormEvent) => {
     e.preventDefault();
     setAddError(null);
@@ -130,8 +128,9 @@ export default function AdminPage() {
     if (!newName.trim()) return setAddError("Name is required.");
     if (!newImageUrl.trim()) return setAddError("Image URL is required.");
     if (!newDescription.trim()) return setAddError("Description is required.");
-    if (!Number.isFinite(newPrice) || newPrice <= 0)
+    if (!Number.isFinite(newPrice) || newPrice <= 0) {
       return setAddError("Price must be a positive number.");
+    }
 
     setAdding(true);
     try {
@@ -178,11 +177,23 @@ export default function AdminPage() {
         <div className={styles.headerActions}>
           <button
             className={styles.secondaryBtn}
+            type="button"
+            onClick={() => navigate("/admin/bookings")}
+          >
+            View Bookings
+          </button>
+
+          <button
+            className={styles.secondaryBtn}
+            type="button"
             onClick={() => setShowAdd((v) => !v)}
           >
             {showAdd ? "Close" : "+ Add Product"}
           </button>
-          <button onClick={handleLogout}>Logout</button>
+
+          <button className={styles.secondaryBtn} type="button" onClick={handleLogout}>
+            Logout
+          </button>
         </div>
       </div>
 
@@ -288,13 +299,12 @@ export default function AdminPage() {
             <input
               type="text"
               value={product.imageUrl}
-              onChange={(e) =>
-                handleChange(product.id, "imageUrl", e.target.value)
-              }
+              onChange={(e) => handleChange(product.id, "imageUrl", e.target.value)}
             />
 
             <div className={styles.cardActions}>
               <button
+                type="button"
                 onClick={() => handleSave(product)}
                 disabled={savingId === product.id}
               >
@@ -311,9 +321,7 @@ export default function AdminPage() {
             </div>
 
             {savedId === product.id && <div className={styles.saved}>Saved ✓</div>}
-            {errorId === product.id && (
-              <div className={styles.inlineError}>Save failed</div>
-            )}
+            {errorId === product.id && <div className={styles.inlineError}>Save failed</div>}
           </div>
         ))}
       </div>
